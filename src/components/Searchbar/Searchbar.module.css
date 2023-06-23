@@ -25,7 +25,7 @@
 .form .input{
     all:unset;
     background-color: transparent;
-    color: white;
+    color: black;
     font-size: 1rem;
     border-bottom: solid 1px white;
 }
