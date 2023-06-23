@@ -12,7 +12,9 @@ import toast, { Toaster } from "react-hot-toast";
 
 import { createPortal } from "react-dom";
 
+// Obtener una referencia al elemento del DOM con el id "portal"
 const portalElement = document.getElementById("portal");
+
 class ImageGallery extends Component {
   state = {
     fetchData: [],
@@ -21,23 +23,36 @@ class ImageGallery extends Component {
     showLoader: true,
   };
 
+  // Mediante toast mandamos el mensaje "error on fetching data"
   error = () => toast.error("error on fetching data");
+
+  // Mandamos un msj de advertencia, igual utilizando la libreria de toast y agregamos un pequeño emoji
   warning = () =>
     toast("I cant find anything with this query", {
-      icon: "👽",
+      icon: "☠️",
     });
-
+  
+  /* Función asíncrona que utiliza la sintaxis async componentDidMount() {}
+      Este método se ejecuta después de que el componente ha sido montado en el DOM
+      y es un buen lugar para realizar llamadas a API u otras operaciones asíncronas.*/
   async componentDidMount() {
     let data = [];
-    
+
+    // Se utiliza un bloque try-catch para manejar cualquier error que pueda ocurrir durante la ejecución del código.
     try {
-      data = await this.fetchingData();
+      data = await this.fetchingData();// La palabra clave await se utiliza para esperar a que la función fetchingData() se complete y devuelva un resultado antes de continuar con la ejecución del código.
       this.setState({
         fetchData: [...data],
       });
-    } catch (error) {
+    } 
+    
+    // Si ocurre un error, muestra una notificacion de error
+    catch (error) {
       this.error();
-    } finally {
+    } 
+    
+    // Se ejecuta independientemente si hay un error o no, despuies manda un mesnaje de warning
+    finally {
       if (data.length === 0) {
         this.warning();
       }
