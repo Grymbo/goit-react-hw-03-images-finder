@@ -7,18 +7,27 @@ class Searchbar extends Component {
     data: "",
   };
 
+  /*Se encarga de actualizar el estado del componente con el valor actual del campo de entrada. 
+  Esto permite que el componente capture y mantenga un seguimiento del valor ingresado 
+  por el usuario en el campo de entrada.*/
   onInputChange = (e) => {
     this.setState({
       data: e.target.value,
     });
   };
 
+  /*Se encarga de capturar el evento de envío del formulario, 
+  ejecutar una función proporcionada a través de las props del componente (inputData) 
+  con el valor actual del campo de entrada (this.state.data), 
+  y realizar cualquier otra acción necesaria después del envío del formulario.*/
   onSubmitHandler = (e) => {
     e.preventDefault();
     this.props.inputData(this.state.data);
     this.restore();
   };
 
+  /*Se utiliza para restablecer el estado de data del componente a una cadena vacía, 
+  lo que es útil después de enviar un formulario o completar una acción específica*/
   restore = () => {
     this.setState({ data: "" });
   };
