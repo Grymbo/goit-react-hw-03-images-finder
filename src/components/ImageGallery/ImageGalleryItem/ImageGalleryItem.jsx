@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import classes from "./ImageGalleryItem.module.css";
 
+// Componente de React que representa un elemento de la galería de imágenes. 
 class ImageGalleryItem extends Component {
   render() {
     const { fetchData } = this.props;
