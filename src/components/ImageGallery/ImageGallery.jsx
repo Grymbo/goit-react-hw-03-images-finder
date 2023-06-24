@@ -58,8 +58,9 @@ class ImageGallery extends Component {
       }
     }
   }
-
-  async componentDidUpdate(prevProps, prevState) {
+  
+  //Actualiza las propiedades y el estado
+  async componentDidUpdate(prevProps, prevState) { // Estos parámetros contienen las propiedades y el estado anteriores del componente, respectivamente.
     if (prevProps.page != this.props.page) {
       const data = await this.fetchingData();
       this.setState({
@@ -67,6 +68,10 @@ class ImageGallery extends Component {
       });
     }
 
+    //Permite realizar una llamada asíncrona a fetchingData(), 
+    //actualizar el estado del componente con los nuevos datos y 
+    //realizar acciones adicionales en función de los resultados obtenidos. 
+    //Todo esto ocurre solo cuando la propiedad inputData ha cambiado.
     if (prevProps.inputData !== this.props.inputData) {
       const data = await this.fetchingData();
       console.log(data);
@@ -79,6 +84,10 @@ class ImageGallery extends Component {
     }
   }
 
+  /*Realiza una llamada a la API para obtener datos, 
+  actualiza el estado del componente en función del resultado de la llamada 
+  y maneja posibles errores. 
+  También proporciona un indicador de carga mientras se espera la respuesta de la API.*/
   fetchingData = async () => {
     this.setState({
       showLoader: true,
@@ -99,6 +108,11 @@ class ImageGallery extends Component {
     }
   };
 
+  /*Se encarga de capturar el clic en un elemento, 
+  obtener un valor de atributo específico de ese elemento y 
+  actualizar el estado del componente en consecuencia. 
+  Esto puede utilizarse para realizar acciones adicionales o 
+  mostrar contenido adicional relacionado con el elemento en el que se hizo clic.*/
   clickedElementHandler = (e) => {
     const sorce = e.target.getAttribute("data-sorce");
     if (sorce) {
@@ -109,6 +123,8 @@ class ImageGallery extends Component {
     }
   };
 
+  /*Se encarga de cambiar el estado del componente para ocultar o cerrar un modal específico. 
+  Esto se logra estableciendo la propiedad showModal en false dentro de setState()*/
   closeModal = () => {
     this.setState({
       showModal: false,
