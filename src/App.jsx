@@ -10,12 +10,17 @@ class App extends Component {
     page: 1,
   };
 
+  /* Se encarga de actualizar el estado del componente con los datos de búsqueda o 
+  entrada proporcionados. Esto se logra mediante la actualización de la propiedad 
+  fetchingData del estado del componente.*/
   inputDataHandler = (searchData) => {
     this.setState({
       fetchingData: searchData,
     });
   };
 
+  /*  Se encarga de actualizar el estado del componente con el número de página proporcionado, 
+  lo que permite cambiar la página actual en el componente.*/
   changePage = (pageNumber) => {
     this.setState({
       page: pageNumber,
